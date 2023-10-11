@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Color Extract</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="/static/styles.css" rel="stylesheet">
+</head>
+<body>
+    <section class="header-section">
+        <div class="hero container">
+            <h1>Image Color Extract</h1>
+        </div>
+    </section>
+    <div class="body-container container">
+
+
+    <hr>
+        {% if filename != None: %}
+         <h2>{{filename}}</h2>
+            <img src="{{image}}">
+        {% else: %}
+        <h2>Demo</h2>
+        <img src="\static\uploads\sunflower.jpg">
+        {% endif %}
+        {% if colors: %}
+        <table class="table my-5" style="width: 70%;">
+            <thead>
+                <tr>
+                    <th scope="col"> Color</th>
+                    <th scope="col"> Color Code</th>
+                    <th scope="col"> Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in colors.items() %}
+                <tr>
+                    <td style="background-color: {{value['Hex']}};"></td>
+                    <td>{{value['Hex']}}</td>
+                    <td>{{value['Percentage']}}%</td>
+                </tr>
+                 {% endfor %}
+            </tbody>
+       </table>
+        <div class="form-container">
+            <form method="POST" action="{{url_for('upload_files')}}" enctype="multipart/form-data">
+                  <p><input type="file" name="file"></p>
+                  <label>Number of Colors: </label>
+                 <input type="text" name="num_color">
+                  <p><input type="submit" value="Submit"></p>
+            </form>
+        </div>
+
+        {% else: %}
+            <div class="form-container">
+
+            <form method="POST" action="{{url_for('upload_files')}}" enctype="multipart/form-data">
+                  <p><input type="file" name="file"></p>
+                  <label>Number of Colors: </label>
+                 <input type="text" name="num_color">
+                  <p><input type="submit" value="Submit"></p>
+            </form>
+
+            </div>
+        {% endif %}
+
+
+
+    </div>
+
+    <section class="footer-section">
+        <div class="container">
+          <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">© Jaison White</p>
+          </footer>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

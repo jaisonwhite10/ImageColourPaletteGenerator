@@ -1,0 +1,40 @@
+body {background-color: #E5C3A6;}
+
+li {font-weight: bold; font-size: 18px;}
+
+p {font-weight: bold; font-size: 18px;}
+
+.header-section {background-color: #2E4374;}
+
+
+
+.hero {
+       height: 25vh;
+       display: flex;
+
+       justify-content: center;
+       align-items: center;
+
+}
+
+.body-container {background-color: #7C81AD;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.body-container > h2 {text-align: left; align-self: flex-start;}
+
+.form-container {text-align: left;align-self: flex-start;}
+
+.footer-section {background-color: #2E4374; height:25vh; display: flex;}
+
+.footer-container {
+
+   justify-content: center;
+   align-self: center;
+
+}
