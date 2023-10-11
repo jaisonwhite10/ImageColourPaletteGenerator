@@ -4,7 +4,6 @@ import scipy
 import scipy.misc
 import scipy.cluster
 
-
 class Photo:
 
     def __init__(self):
@@ -62,25 +61,12 @@ class Photo:
     # Print the top 10 clusters
     def show_top_10(self):
         for i, (color, count) in enumerate(self.sorted_clusters):
-            # print(f'Color {i + 1}: {color}, Count: {count}')
             self.rgb_to_hex(color[0], color[1], color[2])
 
-        # my_dict = {f'Color {i + 1}': (color, count) for i, (color, count) in enumerate(self.sorted_clusters)}
         self.color_dict = {
             f'Color {i + 1}': {'RGB': color, 'Percentage': round(count/self.num_pixels*100,2)} for
             i, (color, count) in enumerate(self.sorted_clusters)}
 
-        # for item in self.color_dict:
-        #     item['Hex'] = self.rgb_to_hex(color[0], color[1], color[2])
-
-        # self.color_dict = {
-        #     f'Color {i + 1}': {'RGB': color, 'Count': count, 'Hex': self.rgb_to_hex(color[0], color[1], color[2])}
-        #     for i, (color, count) in enumerate(self.sorted_clusters)
-        # }
-
         for i, (color, count) in enumerate(self.sorted_clusters):
             hex_value = self.rgb_to_hex(color[0], color[1], color[2])
             self.color_dict[f'Color {i + 1}']['Hex'] = hex_value
-
-        # print(self.color_dict)
-        # print(self.num_pixels)
